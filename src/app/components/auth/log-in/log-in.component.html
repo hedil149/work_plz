@@ -1,0 +1,31 @@
+<form name="login" [formGroup]="loginForm" method="post" class="auth login">
+
+    <div [formGroup]="loginForm">
+        <a href="/home" class="back">Retour</a>
+        <div class="form">
+            <div class="blc-img">
+                <img src="../../../../assets/images/lloydLogo.png" alt="">
+            </div>
+            <form class="form-group" [formGroup]="loginForm">
+
+                <input formControlName="Email" type="email" placeholder="Email" pattern=".+@globex.com" size="30" id="1" required />
+                <input formControlName="password" type="password" placeholder="Mot de passe" minlength="8" id="2" required />
+
+
+                <button (click)='onSubmit()' type="submit" href="/home">Connexion</button>
+                <div class="or-container">
+                    <div class="line-separator"></div>
+                    <div class="or-label">ou</div>
+                    <div class="line-separator"></div>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <a href="http://localhost:3000/api/auth/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Connexion avec Google</a>
+                    <a href="http://localhost:3000/api/auth/facebook"><img src="https://img.icons8.com/officexs/16/ffffff/facebook-new.png" /> Connexion avec Facebook </a>
+                </div>
+                <p class="message">Pas enregisté? <a class="sign-up" href="/register">Créer un compte</a></p>
+            </form>
+
+        </div>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+.bg-primary {
+  background-color: #2f55d4 !important;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.bg-primary .copy-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

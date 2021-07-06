@@ -1,0 +1,70 @@
+<!--Navbar Start-->
+<nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark" (window:scroll)="windowScroll()" id="navbar">
+    <div class="container">
+        <!-- LOGO -->
+        <a class="logo text-uppercase" href="/">
+            <img src="assets/images/lloydLogo.png" alt="" class="logo-dark" height="50" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleMenu()">
+    <i class="mdi mdi-menu"></i>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
+                <li class="nav-item" [ngClass]="{'active':currentSection === 'home'}">
+                    <a [ngxScrollTo]="'#home'" href="/home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" [ngClass]="{'active':currentSection === 'services'}">
+                    <a [ngxScrollTo]="'#services'" href="javascript: void(0);" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item" [ngClass]="{'active':currentSection === 'features'}">
+                    <a [ngxScrollTo]="'#features'" href="javascript: void(0);" class="nav-link">Sur-Nous</a>
+                </li>
+                <li class="nav-item" [ngClass]="{'active':currentSection === 'clients'}">
+                    <a [ngxScrollTo]="'#clients'" href="javascript: void(0);" class="nav-link">Assurances</a>
+                </li>
+                <li class="nav-item" [ngClass]="{'active':currentSection === 'pricing'}">
+                    <a [ngxScrollTo]="'#pricing'" href="javascript: void(0);" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+<div appScrollspy [spiedTags]=" [ 'SECTION'] " (sectionChange)="onSectionChange($event) ">
+    <!-- Hero section Start -->
+    <section class="hero-section bg-soft-primary " id="home ">
+        <div class="container ">
+            <div class="row justify-content-center ">
+                <div class="col-lg-6 ">
+                    <div class="hero-wrapper mb-4 ">
+                        <p class="font-16 " class="h4 ">Bienvenu dans notre site LLOYD Assurance: Agence El Medina Mahdia </p>
+                        <h1 class="hero-title mb-4 ">Profitez de nos bons plans sur nos Assurances Auto, Habitation et prévoyance. <span class="text-primary "></span>
+                        </h1>
+
+                        <p class="display-5 ">En 2021, profitez de nos bons plans sur nos assurances auto, habitation et santé. Nous vous proposons des formules d'assurance, au meilleur rapport qualité/prix, adaptées à vos besoins. Sur LLOYD Assurance, faire un devis ou souscrire
+                            en ligne, c'est simple, facile et rapide.
+                        </p>
+
+                        <div class="mt-4 ">
+                            <a href="/login " class="btn btn-primary mt-2 mr-2 ">Connectez-vous </a>
+                            <a href="/register" class="btn btn-success mt-2 mr-2 ">Créer un compte </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-sm-8 ">
+                    <div class="home-img mt-8 mt-lg-6 ">
+                        <img src="assets/images/home-img.png" alt=" " class="img-fluid mx-auto d-block ">
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- Hero section End -->
+
+
+</div>

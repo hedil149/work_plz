@@ -1,0 +1,46 @@
+<form name="registration" [formGroup]="registerForm" method="post" class="auth register">
+    <div>
+        <a href="/home" class="back">Retour</a>
+        <div class="form">
+            <div class="blc-img">
+                <img src="../../../../assets/images/lloydLogo.png" alt="">
+            </div>
+
+
+            <div class="image-container">
+                <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'" class=""> <br/>
+                <input type='file' (change)="onSelectFile($event)" class="select-profile-picture">
+                <span class="message">Clicker içi pour télecharger votre photo profil </span>
+            </div>
+            <div class="h4">
+                <p> Veuillez remplir les champs pour modifier votre profil !</p>
+            </div>
+            <input formControlName="LastName" placeholder="Prénom" type="text" name="fname" id="r1">
+            <input formControlName="FirstName" placeholder="Nom" type="text" name="lname" id="r2">
+            <input formControlName="User_Name" placeholder="Nom d'utilisateur" type="text" name="uname" id="r3">
+            <input formControlName="CIN" type="number" placeholder="CIN" name="uname" id="r4">
+            <input formControlName="Email" placeholder="Email" type="text" name="email" id="r6">
+            <input formControlName="contact" placeholder="Contact" type="text" name="mno" id="r7">
+            <select name="ct" id="r10">
+
+            <option>Ville</option>
+            <option>Mahdia</option>
+            <option>Monastir</option>
+            <option>sousse</option>
+            <option>Tunis</option>
+            <option>Kairwan</option>
+            <option>bizerte</option>
+            <option>sfax</option>
+            <option>Beja</option>
+            </select>
+            <input formControlName="password" placeholder="Mot de passe" type="password" name="pass" id="r5">
+            <input formControlName="password2" placeholder="Confirmer mot de passe" type="password" name="pass2" id="r8">
+            <div class="buttons">
+                <button (click)='onSubmit()' type="submit" value="Submit" id="1"> Modifier Profil</button>
+
+            </div>
+            <button (click)='onSubmit()' type="submit" value="Submit" id="2"> Visualiser Profil</button>
+
+        </div>
+    </div>
+</form>

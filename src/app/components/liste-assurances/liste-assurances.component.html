@@ -1,0 +1,636 @@
+<form name="liste-assurances" [formGroup]="form" action="liste-assurances.component.ts" method="post">
+
+
+
+    <div class="form">
+        <!-- <form class="form-group" [formGroup]="form"> -->
+
+        <!--<input formControlName="numeroContrat" type="number" placeholder="votre numero de Contrat " required />-->
+
+        <form name="form" [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+            <div class="form-group">
+                <label for="numeroContrat">Numero Contract</label>
+                <input type="text" class="form-control" formControlName="numeroContrat" [ngClass]="{'is-invalid':form.get('numeroContrat')?.touched && form.get('numeroContrat')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> Le numéro de contrat doit etre au moin 6 caractères! </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="nomPrenomContractant">Nom et Prénom du contractant</label>
+                <input formControlName="nomPrenomContractant" type="text" [ngClass]="{'is-invalid':form.get('nomPrenomContractant')?.touched && form.get('nomPrenomContractant')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp inserer Le Nom et Prénom du contractant!</div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="adresse">adresse</label>
+                <input formControlName="adresse" type="text" [ngClass]="{'is-invalid':form.get('adresse')?.touched && form.get('adresse')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp inserer l'adresse de contractant!</div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="ville">Ville</label>
+                <input formControlName="ville" type="text" [ngClass]="{'is-invalid':form.get('ville')?.touched && form.get('ville')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp inserer votre Ville!</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ProfessionActivite">Profession/Activité:</label>
+                <input formControlName="ProfessionActivite" type="text" [ngClass]="{'is-invalid':form.get('ProfessionActivite')?.touched && form.get('ProfessionActivite')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp indiquer votre Profession ou Activité!</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pieceDidenditeN">Pièce d'idenditéN:</label>
+                <input formControlName="pieceDidenditeN" type="number" [ngClass]="{'is-invalid':form.get('ProfessionActivite')?.touched && form.get('ProfessionActivite')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp indiquer votre Pièce d'idenditéN!</div>
+                </div>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>pièce D'idendité</mat-label>
+                <mat-select [formGroup]="form" multiple>
+                    <mat-option *ngFor="let pieceDidendite of pieceDidenditeList" [value]="pieceDidendite">{{pieceDidendite}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="form-group">
+                <label for="RegistreDeCommerce">Registre De Commerce:</label>
+                <input formControlName="RegistreDeCommerce" type="text" [ngClass]="{'is-invalid':form.get('RegistreDeCommerce')?.touched && form.get('RegistreDeCommerce')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp indiquer votre Registre de Commerce!</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="delivreLe">delivré Le:</label>
+                <input formControlName="delivreLe" type="text" [ngClass]="{'is-invalid':form.get('RegistreDeCommerce')?.touched && form.get('RegistreDeCommerce')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> svp indiquer la date de livraison!</div>
+                </div>
+            </div>
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+
+            <p> Caractéristiques du Véhicule</p>
+            <mat-form-field appearance="fill">
+                <mat-label> A-Genre</mat-label>
+                <mat-select [formGroup]="form" multiple>
+                    <mat-option *ngFor="let AGenre of AGenreList" [value]="AGenre">{{AGenre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <label for="Autres">Autres:</label>
+            <input formControlName="Autres" type="text" [ngClass]="{'is-invalid':form.get('Autres')?.touched && form.get('Autres')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> svp indiquer votre Registre de Commerce!</div>
+            </div>
+            <label for="Marque">Marque:</label>
+            <input formControlName="Marque" type="text" [ngClass]="{'is-invalid':form.get('Marque')?.touched && form.get('Marque')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> svp indiquer la marque de votre véhicule!</div>
+            </div>
+            <label for="Type">Type:</label>
+            <input formControlName="Type" type="text" [ngClass]="{'is-invalid':form.get('Type')?.touched && form.get('Type')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+            <label for="nSerie">Numéro de serie:</label>
+            <input formControlName="nSerie" type="text" [ngClass]="{'is-invalid':form.get('nSerie')?.touched && form.get('nSerie')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le numéro de Série doit etre au moin 6 caractères!</div>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label> Energie</mat-label>
+                <mat-select [formGroup]="form" multiple>
+                    <mat-option *ngFor="let Energie of EnergieList" [value]="Energie">{{Energie}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <label for="pMiseEnCirculation"> 1ère Mise En Circulation:</label>
+            <input formControlName="pMiseEnCirculation" type="text" [ngClass]="{'is-invalid':form.get('pMiseEnCirculation')?.touched && form.get(' pMiseEnCirculation')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="nImmatriculation">  Numéro d'immatriculation:</label>
+            <input formControlName="nImmatriculation" type="text" [ngClass]="{'is-invalid':form.get('nImmatriculation')?.touched && form.get(' nImmatriculation')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <div class="form-group">
+                <label for=" nImmatriculation">  charge utile:</label>
+                <input formControlName="chargeUtile" type="text" [ngClass]="{'is-invalid':form.get('chargeUtile')?.touched && form.get('chargeUtile')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+            <label for="PTC">  P.T.C:</label>
+            <input formControlName="PTC" type="text" [ngClass]="{'is-invalid':form.get('PTC')?.touched && form.get('PTC')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="puissance">  puissance:</label>
+            <input formControlName="puissance" type="text" [ngClass]="{'is-invalid':form.get('puissance')?.touched && form.get('puissance')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="nombrePlace">  nombre des Places:</label>
+            <input formControlName="nombrePlace" type="text" [ngClass]="{'is-invalid':form.get('nombrePlace')?.touched && form.get('nombrePlace')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="poidsVide"> poids Vide:</label>
+            <input formControlName="poidsVide" type="text" [ngClass]="{'is-invalid':form.get('poidsVide')?.touched && form.get('poidsVide')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <div class="form-group">
+                <label for="valeurMarchande"> valeur Marchande:</label>
+                <input formControlName="valeurMarchande" type="text" [ngClass]="{'is-invalid':form.get('valeurMarchande')?.touched && form.get('valeurMarchande')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+            <label for="nombrePlace"> nombre des Places:</label>
+            <input formControlName="nombrePlace" type="text" [ngClass]="{'is-invalid':form.get('nombrePlace')?.touched && form.get('nombrePlace')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="valeurAneuf">  valeur à neuf:</label>
+            <input formControlName="valeurAneuf" type="text" [ngClass]="{'is-invalid':form.get('valeurAneuf')?.touched && form.get('valeurAneuf')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+                <p>Le véhicule fait t-il l'objet d'une transcription de privilège,Si oui, au profil de quel organisme? Banque, société de leasing , </p>
+            </div>
+
+            <label for="valeurAneuf">  valeur à neuf:</label>
+            <input formControlName="valeurAneuf" type="text" [ngClass]="{'is-invalid':form.get('valeurAneuf')?.touched && form.get('valeurAneuf')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+                <p>Le véhicule fait t-il l'objet d'une transcription de privilège,Si oui, au profil de quel organisme? Banque, société de leasing , </p>
+            </div>
+
+            <label for="Autresss"> Autres :</label>
+            <input formControlName="Autresss" type="text" [ngClass]="{'is-invalid':form.get('Autresss')?.touched && form.get('Autresss')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="Duree"> Durée :</label>
+            <input formControlName="Duree" type="text" placeholder=" Ans (s)" [ngClass]="{'is-invalid':form.get('Duree')?.touched && form.get('Duree')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label> Usage du Véhicule</mat-label>
+                <mat-select [formGroup]="form" multiple>
+                    <mat-option *ngFor="let UsageVehicule of UsageVehiculeList" [value]="UsageVehicule">{{UsageVehicule}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Transport Public de Voyageurs</mat-label>
+                <mat-select formControlName="TransportPublicVoyageurs" [ngClass]="{'is-invalid':form.get('TransportPublicVoyageurs')?.touched && form.get('TransportPublicVoyageurs')?.invalid}" required>
+
+
+                    <mat-option *ngFor="let TransportPublicVoyageurs of TransportPublicVoyageursList" [value]="TransportPublicVoyageurs">{{TransportPublicVoyageurs}}</mat-option>
+
+                </mat-select>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-form-field>
+
+            <div class="form-group">
+                <label for="Autressss"> Autres Usages: lequels?</label>
+                <input formControlName="Autressss" type="text" [ngClass]="{'is-invalid':form.get('Autressss')?.touched && form.get('Autressss')?.invalid}" required />
+                <div class="invalid-feedback">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+            <p> Utilisez-vous le véhicule pour transporter des inflammables, corrosives, explosives, carburantes ou lubrifiantes?
+            </p>
+            <mat-card>
+                <mat-card-content>
+
+                    <section formControlName="natureProduit" type="text" [ngClass]="{'is-invalid':form.get('natureProduit')?.touched && form.get('natureProduit')?.invalid}" required>
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">non</mat-checkbox>
+                    </section>
+                    <div class="invalid-feedback">
+                        <div> indiquer votre choix !</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <div class="form-group">
+                <label for="natureProduit"> Si oui, nature des produit: </label>
+                <input formControlName="natureProduit" type="text" [ngClass]="{'is-invalid':form.get('natureProduit')?.touched && form.get('natureProduit')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+            <h1>Garanties Démandées</h1><br>
+            <p>Outre les garanties obligatoires [RC,RTI,CAS], le contractant désire-t-il souscrire d'autres garanties? Si oui, cocher les cases correspondantes:</p>
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+
+            <mat-card>
+                <mat-card-content>
+                    <h4 class="volVehicule"> *Incendie</h4>
+                    <section formControlName="volVehicule" [ngClass]="{'is-invalid':form.get('volVehicule')?.touched && form.get('volVehicule')?.invalid}" required>
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                    </section>
+                    <div class="invalid-feedback">
+                        <div> indiquer votre choix !</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+
+
+            <mat-card>
+                <mat-card-content>
+                    <h4 class="dommagesVehicules"> *dommages aux Vehicules</h4>
+                    <section formControlName="dommagesVehicules" [ngClass]="{'is-invalid':form.get('dommagesVehicules')?.touched && form.get('dommagesVehicules')?.invalid}" required>
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">Avec franchise </mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Sans franchise</mat-checkbox>
+                    </section>
+                    <div class="invalid-feedback">
+                        <div> indiquer votre choix !</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+
+            <label for="Franchise"> Si oui, nature des produit: </label>
+            <input formControlName="Franchise" type="number" placeholder="  .........% " [ngClass]="{'is-invalid':form.get('Franchise')?.touched && form.get('Franchise')?.invalid}" />
+            <div class="invalid-feedback">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+            <mat-card>
+                <mat-card-content>
+                    <h4 class="dommagesCollisions"> *dommagesCollisions</h4>
+                    <section formControlName="dommagesCollisions" [ngClass]="{'is-invalid':form.get('dommagesCollisions')?.touched && form.get('dommagesCollisions')?.invalid}" required>
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                    </section>
+                    <div class="invalid-feedback">
+                        <div> indiquer votre choix !</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+            <mat-card-content>
+                <h4 class=" ExtensionDommages"> *Extension Dommages accidents résultant des forces de la nature ou d'émuteutes et mouvements populaires
+                </h4>
+                <section formControlName="ExtensionDommages" [ngClass]="{'is-invalid':form.get('ExtensionDommages')?.touched && form.get('ExtensionDommages')?.invalid}" required>
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+            <mat-card-content>
+                <h4 class="ExtensionGarantie"> *Extension garantie incendie et explosion suite aux émeutes, mouvements populaires, actes de terrorisme et de sabotage</h4>
+                <section formControlName="ExtensionGarantie" [ngClass]="{'is-invalid':form.get('ExtensionGarantie')?.touched && form.get('ExtensionGarantie')?.invalid}" required>
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+
+            <mat-card-content>
+
+                <h4 class="assuranceBris"> *Assurance Bris,de glaces</h4>
+                <section formControlName="assuranceBris" [ngClass]="{'is-invalid':form.get('assuranceBris')?.touched && form.get('assuranceBris')?.invalid}" required>
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+            <div class="form-group">
+                <label for="limiteGaranties">limite Des Garanties</label>
+                <input formControlName="limiteGaranties" type="number" placeholder=" en DT " [ngClass]="{'is-invalid':form.get('limiteGaranties')?.touched && form.get('limiteGaranties')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+
+
+                <div class="or-container">
+                    <div class="line-separator"></div>
+                </div>
+            </div>
+            <mat-card-content>
+                <h4 class="assurancesAutoRadio"> *Assurance des Auto-Radio, casette et téléphone </h4>
+                <section formControlName="assurancesAutoRadio" [ngClass]="{'is-invalid':form.get('assurancesAutoRadio')?.touched && form.get('assurancesAutoRadio')?.invalid}">
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+            <div class="form-group">
+                <label for="limiteGarantiesII">limite Des Garanties </label>
+                <input formControlName="limiteGarantiesII" type="number" placeholder=" en DT " [ngClass]="{'is-invalid':form.get('limiteGarantiesII')?.touched && form.get('limiteGarantiesII')?.invalid}" />
+                <div class="invalid-feedback">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+
+
+
+            <mat-card-content>
+
+                <h4 class=" assurancePersonnes"> *Assurance des personnes transportés </h4>
+                <section formControlName=" assurancePersonnes" type="number" placeholder=" en DT " [ngClass]="{'is-invalid':form.get(' assurancePersonnes')?.touched && form.get(' assurancePersonnes')?.invalid}">
+                    <mat-checkbox class=" example-margin " [(ngModel)]="checked ">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin " [(ngModel)]="indeterminate ">non</mat-checkbox>
+
+                </section>
+                <div class="invalid-feedback ">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+
+
+            <div class="form-group ">
+                <label for="Nombre ">Nombre </label>
+                <input formControlName="Nombre " type="number " [ngClass]="{
+                                                          'is-invalid':form.get( 'Nombre')?.touched && form.get( 'Nombre')?.invalid} " />
+                <div class="invalid-feedback ">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group ">
+                <label for="Capital ">Capital </label>
+                <input formControlName="Capital " type="number
+                                                          " [ngClass]="{ 'is-invalid':form.get( 'Capital')?.touched && form.get(
+                                                          'Capital')?.invalid} " />
+                <div class="invalid-feedback ">
+                    <div> Le champ ne doit pas etre vide !</div>
+                </div>
+            </div>
+
+
+            <div class="or-container ">
+                <div class="line-separator "></div>
+            </div>
+
+            <mat-card-content>
+                <h4 class="GarantiesSpecial"> *Garantie Spéciale individuel conducteur</h4>
+
+                <section formControlName=" GarantiesSpecial" [ngClass]="{'is-invalid':form.get(' GarantiesSpecial')?.touched && form.get(' GarantiesSpecial')?.invalid}">
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+            <div class="or-container ">
+                <div class="line-separator "></div>
+            </div>
+            <mat-card-content>
+
+                <h4 class="GarantiesAssistanceEtranger"> *Garantie Assistance à l'étranger </h4>
+                <section formControlName=" GarantiesAssistanceEtranger" [ngClass]="{'is-invalid':form.get(' GarantiesAssistanceEtranger')?.touched && form.get(' GarantiesAssistanceEtranger')?.invalid}">
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+
+
+            <div class="or-container">
+                <div class="line-separator"></div>
+            </div>
+            <mat-card-content>
+                <h4 class="GarantiesAssistanceTunisie"> *Garantie Assistance en Tunisie </h4>
+                <section formControlName=" GarantiesAssistanceEtranger" [ngClass]="{'is-invalid':form.get(' GarantiesAssistanceTunisie')?.touched && form.get(' GarantiesAssistanceTunisie')?.invalid}">
+                    <mat-checkbox class="example-margin" [(ngModel)]="checked">oui</mat-checkbox>
+                    <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">nom</mat-checkbox>
+
+                </section>
+                <div class="invalid-feedback">
+                    <div> indiquer votre choix !</div>
+                </div>
+            </mat-card-content>
+
+
+            <div class="or-container ">
+                <div class="line-separator "></div>
+            </div>
+
+            <label for="Autresssss ">Autres: </label>
+            <input formControlName="Autresssss " type="text
+                                                          " [ngClass]="{ 'is-invalid':form.get( 'Autresssss')?.touched && form.get(
+                                                          'Autresssss')?.invalid} " />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+
+
+            <div class="or-container ">
+                <div class="line-separator "></div>
+            </div>
+            <h3>Assurance Antèrieure Bonus-Malus </h3>
+
+
+            <label for="dernierCompagineGarantie ">*Auprès de quelle(s) compagnie(s), le véhicule a-t-il été garanti durant les deux dernières années? </label>
+            <input formControlName="dernierCompagineGarantie
+                                                          " type="text " [ngClass]="{ 'is-invalid':form.get(
+                                                          'dernierCompagineGarantie')?.touched && form.get( 'dernierCompagineGarantie')?.invalid} " />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+            <label for="numeroContract ">*Numéro de(s) contrat(s):</label>
+            <input formControlName="numeroContract
+                                                          " type="text " [ngClass]="{ 'is-invalid':form.get( 'numeroContract')?.touched
+                                                          && form.get( 'numeroContract')?.invalid} " />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !
+                </div>
+            </div>
+
+
+
+
+            <p>*Quel est le nombre d'accidents que vous avez déclaré à votre assureur durant les (2) deux dernières années?
+            </p>
+
+
+            <label for="nombreAccidentsDernierAnnes ">*Numéro de(s) contrat(s):</label>
+            <input formControlName="nombreAccidentsDernierAnnes
+                                                          " [ngClass]="{ 'is-invalid':form.get( 'nombreAccidentsDernierAnnes')?.touched
+                                                          && form.get( 'nombreAccidentsDernierAnnes')?.invalid} " />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !
+                </div>
+            </div>
+
+
+
+            <label for="nombreSinistreEngages ">*Quel est le nombre de sinistres ayant engagé votre responsabilité depuis cette date?</label>
+            <input formControlName="nombreSinistreEngages
+                                                          " type="text " [ngClass]="{ 'is-invalid':form.get('nombreAccidentsDernierAnnes')?.touched && form.get( 'nombreAccidentsDernierAnnes')?.invalid}" />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !
+                </div>
+            </div>
+            <section formControlName=" nombreAccidentsDernierAnnes" [ngClass]="{'is-invalid':form.get(' nombreAccidentsDernierAnnes')?.touched && form.get(' nombreAccidentsDernierAnnes')?.invalid}">
+
+
+
+                <mat-checkbox class="example-margin
+                                                          " [(ngModel)]="checked ">Totallement responsable</mat-checkbox>
+                <mat-checkbox class="example-margin
+                                                          " [(ngModel)]="indeterminate ">Partiellement responsable</mat-checkbox>
+            </section>
+
+
+
+
+
+            <label for="dernierCoefBMalus ">*Quel est le dernier coefficient Bonus-Malus ?</label>
+            <input formControlName="dernierCoefBMalus
+                                                          " type="text " [ngClass]="{ 'is-invalid':form.get( 'dernierCoefBMalus')?.touched
+                                                          && form.get( 'dernierCoefBMalus')?.invalid} " />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !
+                </div>
+            </div>
+
+
+            <label for="AutresContrataupresDeLloyd
+                                                          ">*Le proposant est-t-il titulaire d'autre contart auprès du LLoyd Assurance?</label>
+            <input formControlName="AutresContrataupresDeLloyd " type="text " [ngClass]="{
+                                                          'is-invalid':form.get( 'AutresContrataupresDeLloyd')?.touched && form.get(
+                                                          'AutresContrataupresDeLloyd')?.invalid} " />
+            <div class="invalid-feedback
+                                                          ">
+                <div> Le champ ne doit pas etre vide !
+                </div>
+            </div>
+
+
+
+
+
+            <mat-checkbox class="example-margin " [(ngModel)]="checked
+                                                          ">oui</mat-checkbox>
+            <mat-checkbox class="example-margin " [(ngModel)]="indeterminate ">non</mat-checkbox>
+
+
+            <label for="lequel
+                                                          ">Si oui, indiquer lesquels:</label>
+            <input formControlName=" lequel " type="text " [ngClass]="{ 'is-invalid':form.get(
+                                                          'lequel')?.touched && form.get( 'lequel')?.invalid} " />
+            <div class="invalid-feedback ">
+                <div> Le champ ne doit pas etre vide !</div>
+            </div>
+
+
+
+            <label for="Le">"Lieux et date souscription</label>
+            <input formControlName="Le" type="text" [ngClass]="{'is-invalid':form.get('Le')?.touched && form.get('Le')?.invalid}" />
+            <div class="invalid-feedback">
+                <div>
+                    doit pas etre vide !
+                </div>
+            </div>
+
+
+
+
+
+            <p> Le soussigné déclare sincères et exactes les réponses qui précédent et qu'il n'a rien caché qui puisse induire le LLoyd Assurances en erreur dans l'appréciation du risque proposé à l'assurance. Il est rappelé que le présent document est établi</p>
+        </form>
+    </div>
