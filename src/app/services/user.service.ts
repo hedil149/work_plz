@@ -16,6 +16,7 @@ export class UserService {
 // REST_API: string = 'http://localhost:3000/api';
 private _loadProfileUrl = `${environment.api_url}/users/loadprofile`;
 private _loadeditprofileUrl = `${environment.api_url}/users/loadeditprofile`;
+private _insert_FormUrl =  `${environment.api_url}/users/insert_Form`;
 
 
 // Http Header
@@ -32,6 +33,12 @@ httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put<any>(this._loadeditprofileUrl , user)
 
   }
+  //souscription
+  insert_Form(user: any) {
+    return this.http.post<any>(this._insert_FormUrl, user)
+
+  }
+
 
 //   // Add User
 // create(data: User): Observable<any> {

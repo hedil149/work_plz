@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {AuthService} from '../../services/auth.service';
 import {FormControl} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UserService } from 'src/app/services/user.service';
+
 
 
 @Component({
@@ -14,7 +15,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export class ListeAssurancesComponent implements OnInit {
 
  form!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private authservice : AuthService, ) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userservice: UserService, ) { }
   pieceDidenditeList: string[] = ['CIN', 'Carte De Séjour', 'Passeport'];
   AGenreList: string[] = ['Tourisme', 'Camionette', 'Camion', 'Remorque'];
   EnergieList: string[] = ['Essence', 'Gasoil'];
@@ -74,8 +75,7 @@ submitted = false;
       dommagesCollisions: ['', Validators.required],
       ExtensionDommages: ['', Validators.required],
       ExtensionGarantie: ['', Validators.required],
-
-      Franchise: ['', Validators.required],
+     Franchise: ['', Validators.required],
 
       assuranceBris: ['', Validators.required],
       limiteGaranties: ['', Validators.required],
@@ -102,13 +102,13 @@ submitted = false;
     });
   }
   onSubmit() {
-   alert(this.form.value)
 
-       }
+    this.userservice.insert_Form(this.form.getRawValue()).subscribe(data=>{
+      this.router.navigate(['/payment']);
 
+    })}
 
-
-       onReset() {
+      onReset() {
         this.submitted = false;
         this.form.reset();
     }
